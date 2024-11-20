@@ -1,27 +1,106 @@
 // run when html downloaded
 document.addEventListener("DOMContentLoaded", () => {
+
   // varianles of html elements
   const taskInput = document.getElementById("taskInput");
   const addTaskButton = document.getElementById("addTaskButton");
   const taskList = document.getElementById("taskList");
   const filterButtons = document.querySelectorAll(".todo-filters button");
 
+  const languageButtons = document.querySelectorAll(".language-selector button");
 
-  //getting written tasks from local storage and parse them into objects massive. if there local storage empty tasks will be also empty
+  // getting written tasks from local storage and parse them into objects array. if there local storage empty tasks will be also empty
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+
+  // creating object that contains dictionary
+  const translations = {
+    uk: {
+      title: "ToDoApp",
+      placeholder: "Введіть завдання...",
+      addButton: "Додати",
+      all: "Усі",
+      active: "Активні",
+      completed: "Виконані",
+    },
+    en: {
+      title: "ToDoApp",
+      placeholder: "Enter a task...",
+      addButton: "Add",
+      all: "All",
+      active: "Active",
+      completed: "Completed",
+    },
+  };
+
+  // language
+
+  // function to change the texts on the page according to the selected language
+  function setLanguage(lang) {
+    // find the elements to change the text
+    const title = document.querySelector("h1");
+    const taskInput = document.getElementById("taskInput");
+    const addTaskButton = document.getElementById("addTaskButton");
+    const filterButtons = document.querySelectorAll(".todo-filters button");
+
+    // change the text according to the selected language
+    title.textContent = translations[lang].title;
+    taskInput.placeholder = translations[lang].placeholder;
+    addTaskButton.textContent = translations[lang].addButton;
+
+    filterButtons[0].textContent = translations[lang].all;
+    filterButtons[1].textContent = translations[lang].active;
+    filterButtons[2].textContent = translations[lang].completed;
+
+    // save selected language in localStorage
+    localStorage.setItem("language", lang);
+  }
+
+  // function to change the language
+  function setLanguage(lang) {
+    const title = document.querySelector("h1");
+    const filterButtons = document.querySelectorAll(".todo-filters button");
+
+    // updating text of the interface
+    title.textContent = translations[lang].title;
+    taskInput.placeholder = translations[lang].placeholder;
+    addTaskButton.textContent = translations[lang].addButton;
+
+    filterButtons[0].textContent = translations[lang].all;
+    filterButtons[1].textContent = translations[lang].active;
+    filterButtons[2].textContent = translations[lang].completed;
+
+    // save selected language
+    localStorage.setItem("language", lang);
+  }
+
+  // processing language change buttons
+  languageButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang; // get selected language
+      setLanguage(lang); // change the interface language
+    });
+  });
+
+  // loading the selected language at startup
+  const savedLanguage = localStorage.getItem("language") || "uk";
+  setLanguage(savedLanguage); // set the language
+
+
+  //tasks
 
   // update html
   function renderTasks(filter = "all") {
 
     taskList.innerHTML = ""; // clear ol
-    //filter and return task 'active', 'completed', 'all'
+    // filter and return task 'active', 'completed', 'all'
     const filteredTasks = tasks.filter(task => {
       if (filter === "active") return !task.completed;
       if (filter === "completed") return task.completed;
       return true; // Для "all"
     });
 
-    //html for each added task
+    // html for each added task
     filteredTasks.forEach((task, index) => {
       const li = document.createElement("li");
       li.innerHTML = `

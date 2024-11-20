@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDoApp</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoApp</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="todo-app">
-        <h1>ToDo List</h1>
-        <div class="todo-input">
-          <input type="text" id="taskInput" placeholder="Введіть завдання...">
-          <button id="addTaskButton">Додати</button>
-        </div>
-        <ul id="taskList"></ul>
-        <div class="todo-filters">
-          <button data-filter="all">Усі</button>
-          <button data-filter="active">Активні</button>
-          <button data-filter="completed">Виконані</button>
-        </div>
-      </div>
-      <script src="script.js"></script>
+  <div class="todo-app">
+    <div class="language-selector">
+      <button data-lang="uk">Українська</button>
+      <button data-lang="en">English</button>
+    </div>
+    <h1>ToDo List</h1>
+    <div class="todo-input">
+      <input type="text" id="taskInput" placeholder="Введіть завдання...">
+      <button id="addTaskButton">Додати</button>
+    </div>
+    <ul id="taskList"></ul>
+    <div class="todo-filters">
+      <button data-filter="all">Усі</button>
+      <button data-filter="active">Активні</button>
+      <button data-filter="completed">Виконані</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
