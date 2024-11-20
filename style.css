@@ -64,14 +64,14 @@ button {
   padding: 5px 10px;
   margin: 5px;
   border: none;
-  background-color: #007bff;
+  background-color: #adadad;
   color: white;
   border-radius: 4px;
 }
 
 
 .todo-filters button:hover {
-  background-color: #0056b3;
+  background-color: #666666;
 }
 
 .language-selector {
@@ -85,24 +85,20 @@ button {
   padding: 5px 15px;
   font-size: 14px;
   color: #fff;
-  background-color: #007bff;
+  background-color: #adadad;
   border: none;
   border-radius: 5px;
 }
 
 .language-selector button:hover {
-  background-color: #0056b3;
+  background-color: #666666;
 }
 
 .language-selector button:focus {
-  outline: 2px solid #0056b3; /*Visual accent for the active element*/
+  outline: 2px solid #666666; /*Visual accent for the active element*/
 }
 
 .language-selector button.active {
   background-color: #28a745;
   color: #fff;
-}
-
-.language-selector button.active:hover {
-  background-color: #28a745; 
 }
