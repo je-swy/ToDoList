@@ -136,22 +136,22 @@ document.addEventListener("DOMContentLoaded", () => {
     //getting task from input field 
     const taskName = taskInput.value.trim();
     if (taskName) {
-      tasks.push({ name: taskName, completed: false }); //push tasks into massive of tasks     
+      tasks.push({ name: taskName, completed: false }); //push tasks into array of tasks     
       taskInput.value = ""; //clear input field        
-      saveAndRender();//update tasks massive
+      saveAndRender();//update tasks array
     }
   }
 
   // delete task func
   function deleteTask(index) {
-    tasks.splice(index, 1); //delete task from tasks massive
-    saveAndRender(); //update tasks massive
+    tasks.splice(index, 1); //delete task from tasks array
+    saveAndRender(); //update tasks array
   }
 
   // toggle task done or not
   function toggleTask(index) {
     tasks[index].completed = !tasks[index].completed; //change the "completed" stage to set the index
-    saveAndRender(); //update tasks massive
+    saveAndRender(); //update tasks array
   }
 
   // filter tasks for done or not
